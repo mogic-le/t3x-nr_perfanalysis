@@ -82,7 +82,7 @@ class HtmlRenderer
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
             //only available since PHP 5.4.0
             $pagetime = microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'];
-            $htmlstr[] = 'Page: ' . number_format($pagetime, 3) . 's';
+            $htmlstr[] = 'page: ' . number_format($pagetime, 3) . 's';
         }
 
         $counts = array();
@@ -114,7 +114,7 @@ class HtmlRenderer
     border-left:        1px solid rgba(240,240,240,0.4);
     padding:            4px 8px 4px 8px;
     font-family:        sans-serif;
-    font-size:          14px;
+    font-size:          12px;
     font-weight:        lighter;
     text-align:         right;
     word-break:         break-all;
@@ -128,7 +128,6 @@ class HtmlRenderer
   #perfanalysis a {
     margin:             0 0 0 10px;
     padding:            5px 12px 5px 12px;
-    border:             1px solid #40A0D0;
     z-index:            90001;
   }
 
@@ -140,7 +139,7 @@ class HtmlRenderer
   }
 </style>
 <div id="perfanalysis" onclick="document.getElementById('perfanalysis').remove();">
-<span id="perfanalysisurl"></span><span id="perfanalysisbrowser"></span> $str <a href="" onmouseover="document.getElementById('perfanalysisurl').innerHTML = document.location + '<br>';" onclick="document.location.reload(true);">RELOAD</a>
+<span id="perfanalysisurl"></span><span id="perfanalysisbrowser"></span> $str <a href="" onmouseover="document.getElementById('perfanalysisurl').innerHTML = document.location + '<br>';" onclick="document.location.reload(true);">🔃</a>
 </div>
 <script type="text/javascript">
 if (typeof performance != "undefined") {
@@ -152,10 +151,10 @@ if (typeof performance != "undefined") {
             interactive = t.domInteractive - t.domLoading,
             dcl = t.domContentLoadedEventStart - t.domLoading,
             complete = t.domComplete - t.domLoading;
-        var stats = 'Browser: ' + seconds(interactive);
-        //  + 'Complete: ' + seconds(complete) + ', ';
+        var stats = 'browser: ' + seconds(interactive);
+        //  + 'complete: ' + seconds(complete) + ', ';
         document.getElementById('perfanalysisbrowser').innerHTML = stats;
-        // "Total: " + (new Date().getTime() - performance.timing.navigationStart) / 1000 + "s, " +
+        // "total: " + (new Date().getTime() - performance.timing.navigationStart) / 1000 + "s, " +
     });
 }
 </script>
